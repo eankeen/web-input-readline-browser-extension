@@ -1,0 +1,55 @@
+{
+  "name": "TS/R/WP Chrome Extension",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "readline like shortcuts for text input",
+  "homepage_url": "https://duo.com/labs",
+  "web_accessible_resources": ["script.js"],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "commands": {
+    "toggle-feature-foo": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Y",
+        "mac": "Command+Shift+Y"
+      },
+      "description": "Toggle feature foo"
+    },
+    "_execute_browser_action": {
+      "suggested_key": {
+        "windows": "Alt+F",
+        "mac": "Alt+F",
+        "chromeos": "Alt+F",
+        "linux": "Alt+F"
+      }
+    },
+    "_execute_page_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+E",
+        "windows": "Alt+Shift+P",
+        "mac": "Alt+Shift+P"
+      }
+    }
+  },
+  "browser_action": {
+    "default_title": "TSRWPCX",
+    "default_popup": "popup.html"
+  },
+  "default_locale": "en",
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  },
+
+  "permissions": ["https://*/*", "tabs"],
+  "content_security_policy": "default-src 'self';",
+  "content_scripts": [
+    {
+      "matches": ["https://*/*"],
+      "js": ["content.js"]
+    }
+  ]
+}
