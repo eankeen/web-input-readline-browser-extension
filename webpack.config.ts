@@ -1,8 +1,16 @@
+// @ts-ignore Cannot find moudule
+import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin'
+// @ts-ignore Cannot find module
+import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 // @ts-ignore Cannot find module
 import CopyPlugin from 'copy-webpack-plugin'
 // @ts-ignore Cannot find module
+import DuplicatePackageCheckerPlugin from 'duplicate-package-checker-webpack-plugin'
+// @ts-ignore Cannot find module
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import path from 'path'
+// @ts-ignore Cannot find module
+import webpack from 'webpack'
 
 export default {
   mode: 'development',
@@ -10,10 +18,15 @@ export default {
 
   context: path.join(__dirname, 'src'),
   entry: {
-    content: './app/content.ts',
-    background: './app/background.ts',
-    script: './app/script.ts',
-    popup: './ui/popup.tsx',
+    // common
+    'chrome/script': './common/app/script.ts',
+    'chrome/popup': './common/app/ui/popup.tsx',
+    'firefox/script': './common/app/script.ts',
+    'firefox/popup': './common/app/ui/popup.tsx',
+
+    // chrome
+    'chrome/content': './chrome/app/content.ts',
+    'chrome/background': './chrome/app/background.ts',
   },
 
   output: {
@@ -33,14 +46,31 @@ export default {
   },
 
   plugins: [
+    new webpack.ProgressPlugin(),
+    new CaseSensitivePathsPlugin(),
+    new DuplicatePackageCheckerPlugin(),
     new MiniCssExtractPlugin(),
+    new CleanWebpackPlugin(),
     new CopyPlugin([
       {
-        from: './files/**/*',
-        to: '.',
-        transformPath: (targetPath: string): string => {
-          return targetPath.replace('files/', '')
-        },
+        from: './common',
+        to: './chrome',
+        ignore: ['**/app/**'],
+      },
+      {
+        from: './common',
+        to: './firefox',
+        ignore: ['**/app/**'],
+      },
+      {
+        from: './chrome',
+        to: './chrome',
+        ignore: ['**/app/**'],
+      },
+      {
+        from: './firefox',
+        to: './firefox',
+        ignore: ['**/app/**'],
       },
     ]),
   ],

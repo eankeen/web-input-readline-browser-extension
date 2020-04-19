@@ -1,4 +1,4 @@
-import '../styles/popup.css'
+import './styles/popup.css'
 
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'

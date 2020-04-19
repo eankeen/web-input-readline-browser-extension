@@ -1,8 +1,8 @@
 {
-  "name": "TS/R/WP Chrome Extension",
+  "name": "readline-input-browser-extension",
   "version": "0.0.1",
   "manifest_version": 2,
-  "description": "readline like shortcuts for text input",
+  "description": "readline / emacs like shortcuts for text input",
   "homepage_url": "https://duo.com/labs",
   "web_accessible_resources": ["script.js"],
   "icons": {
