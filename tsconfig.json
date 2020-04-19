@@ -1,9 +1,19 @@
 {
   "compilerOptions": {
     "sourceMap": true,
-    "target": "es6",
-    "module": "commonjs",
-    "jsx": "react"
+    "target": "ES2018",
+    "moduleResolution": "classic",
+    "jsx": "react",
+    "strict": true,
+    "alwaysStrict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "strictNullChecks": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
   },
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "dist"]
 }
