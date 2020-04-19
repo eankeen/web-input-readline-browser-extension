@@ -6,10 +6,3 @@
 // chrome.commands.onCommand.addListener((command: string) => {
 //   console.log('Command:', command)
 // })
-
-var s = document.createElement('script');
-s.src = chrome.extension.getURL('script.js');
-(document.head||document.documentElement).appendChild(s);
-s.onload = function() {
-    s.parentNode.removeChild(s);
-};

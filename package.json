@@ -8,9 +8,14 @@
     "build:rollup": "cross-env NODE_ENV=development rollup -c rollup.config.js",
     "build:webpack": "cross-env NODE_ENV=development webpack -r esm"
   },
-  "keywords": [],
-  "author": "",
-  "license": "BSD-3-Clause",
+  "keywords": [
+    "readline",
+    "chrome",
+    "chrome-extension",
+    "extension"
+  ],
+  "author": "Edwin Kofler",
+  "license": "MIT",
   "devDependencies": {
     "@rollup/plugin-multi-entry": "^3.0.0",
     "@rollup/plugin-typescript": "^4.1.1",
