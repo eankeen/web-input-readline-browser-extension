@@ -32,8 +32,14 @@ export default {
 
   plugins: [
     new MiniCssExtractPlugin(),
-    new CopyPlugin([{ from: './files/**/*', to: '.', transformPath: (targetPath, absolutePath) => {
-      return targetPath.replace('files/', '')
-    }}]),
+    new CopyPlugin([
+      {
+        from: './files/**/*',
+        to: '.',
+        transformPath: (targetPath, absolutePath) => {
+          return targetPath.replace('files/', '')
+        },
+      },
+    ]),
   ],
 }

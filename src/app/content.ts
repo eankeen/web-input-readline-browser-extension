@@ -8,7 +8,7 @@
 //   }, 100)
 // })
 
-const script = document.createElement('script');
-script.src = chrome.extension.getURL('script.js');
-(document.head || document.documentElement).appendChild(script);
-script.onload = () => script.parentNode.removeChild(script);
+const script = document.createElement('script')
+script.src = chrome.extension.getURL('script.js')
+;(document.head || document.documentElement).appendChild(script)
+script.onload = () => script.parentNode.removeChild(script)
