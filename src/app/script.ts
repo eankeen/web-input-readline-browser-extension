@@ -1,36 +1,36 @@
 const nonWordChars = new Set([' '])
 
 // util
-function isNonWordChar(char) {
+function isNonWordChar(char: string): boolean {
   return nonWordChars.has(char)
 }
 
-function isWordChar(char) {
+function isWordChar(char: string): boolean {
   return !nonWordChars.has(char)
 }
 
 // actual
-function computeBeginningOfLine(string, cursorPos) {
+function computeBeginningOfLine(): number {
   return 0
 }
 
-function computeEndOfLine(string, cursorPos) {
+function computeEndOfLine(string: string): number {
   return string.length
 }
 
-function computeForwardChar(string, cursorPos) {
+function computeForwardChar(string: string, cursorPos: number): number {
   // ensure we do not loop
   if (cursorPos === string.length) return string.length
   return cursorPos + 1
 }
 
-function computeBackwardChar(string, cursorPos) {
+function computeBackwardChar(string: string, cursorPos: number): number {
   // ensure we do not loop
   if (cursorPos === 0) return 0
   return cursorPos - 1
 }
 
-function computeForwardWord(string, cursorPos) {
+function computeForwardWord(string: string, cursorPos: number): number {
   // TODO: get rid of textAfterCursor and just start at arrays
   // in correctly indexes in for loops
   const textAfterCursor = string.slice(cursorPos)
@@ -71,7 +71,7 @@ function computeForwardWord(string, cursorPos) {
   return cursorPos - 1
 }
 
-function computeBackwardWord(string, cursorPos) {
+function computeBackwardWord(string: string, cursorPos: number): number {
   const textBeforeCursor = string.slice(0, cursorPos)
   const cursorPosAsChar = string.charAt(cursorPos - 1)
 
@@ -105,7 +105,7 @@ function computeBackwardWord(string, cursorPos) {
 }
 
 // TODO; fix ts-ignores
-function performReadlineShortcuts(e) {
+function performReadlineShortcuts(e: KeyboardEvent): void {
   // @ts-ignore
   const string = e.target.value
   // @ts-ignore
@@ -114,23 +114,23 @@ function performReadlineShortcuts(e) {
   const end = e.target.selectionEnd
 
   // we do not support crap when highlighting
-  if (start !== end) return;
+  if (start !== end) return
 
   if (e.ctrlKey && e.code === 'KeyA') {
     e.preventDefault()
-    const newPos = computeBeginningOfLine(string, start)
+    const newPos = computeBeginningOfLine()
     // @ts-ignore
     this.setSelectionRange(newPos, newPos)
   }
 
   if (e.ctrlKey && e.code === 'KeyE') {
     e.preventDefault()
-    const newPos = computeEndOfLine(string, start)
+    const newPos = computeEndOfLine(string)
     // @ts-ignore
     this.setSelectionRange(newPos, newPos)
   }
 
-  if (e.ctrlKey && e.code == 'KeyF') {
+  if (e.ctrlKey && e.code === 'KeyF') {
     e.preventDefault()
 
     const newPos = computeForwardChar(string, start)

@@ -12,13 +12,14 @@
     "browser": true,
     "node": true
   },
-  "plugins": ["@typescript-eslint"],
+  "plugins": ["@typescript-eslint", "simple-import-sort"],
   "extends": [
     "eslint:recommended",
     "standard",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
+    "plugin:no-use-extend-native/recommended",
     "prettier/@typescript-eslint"
   ],
   "settings": {
@@ -31,9 +32,6 @@
     "simple-import-sort/sort": "error",
     "sort-imports": "off",
     "import/order": "off",
-
-    // no-use-extend-native
-    "no-use-extend-native/no-use-extend-native": "error",
 
     // overrides
     "prefer-const": "off",
