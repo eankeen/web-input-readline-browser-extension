@@ -6,5 +6,6 @@
   "[javascript, typescript, javascriptreact, typescriptreact]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
-  "eslint.packageManager": "pnpm"
+  "eslint.packageManager": "pnpm",
+  "prettier.prettierPath": ".prettierrc.json"
 }

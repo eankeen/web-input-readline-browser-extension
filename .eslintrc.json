@@ -12,7 +12,7 @@
     "browser": true,
     "node": true
   },
-  "plugins": ["@typescript-eslint", "simple-import-sort"],
+  "plugins": ["@typescript-eslint", "simple-import-sort", "prettier"],
   "extends": [
     "eslint:recommended",
     "standard",
@@ -20,6 +20,7 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
     "plugin:no-use-extend-native/recommended",
+    "plugin:prettier/recommended",
     "prettier/@typescript-eslint"
   ],
   "settings": {
