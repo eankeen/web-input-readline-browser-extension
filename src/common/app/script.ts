@@ -63,6 +63,16 @@ function performReadlineShortcuts(e: KeyboardEvent): void {
     // @ts-ignore
     this.setSelectionRange(newPos, newPos)
   }
+
+  if (e.altKey && e.code === 'Backspace') {
+    // @ts-ignore
+    const newPos = computeBackwardWord(string, start)
+    // assume newPos is *before* start
+    // @ts-ignore
+    this.value = string.slice(0, newPos) + string.slice(start)
+    // @ts-ignore
+    this.setSelectionRange(newPos, newPos)
+  }
 }
 
 for (let el of document.querySelectorAll('input')) {
