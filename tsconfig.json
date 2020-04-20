@@ -16,7 +16,7 @@
     "noImplicitThis": true,
     "noUnusedLocals": true,
     "lib": ["ESNext", "DOM", "DOM.Iterable", "ScriptHost"]
-   },
+  },
   "exclude": ["node_modules", "dist"],
   "typeRoots": ["node_modules/@types", "node_modules/web-ext-types"]
 }

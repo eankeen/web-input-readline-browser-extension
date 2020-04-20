@@ -1,5 +1,5 @@
 {
-  "name": "text-input-readline-browser-extension",
+  "name": "web-input-readline-hotkeys-extension",
   "version": "0.1.0",
   "description": "allow readline-style on select text input boxes",
   "scripts": {
@@ -19,6 +19,9 @@
     "readline",
     "chrome",
     "chrome-extension",
+    "firefox",
+    "firefox-extension",
+    "hotkeys",
     "extension"
   ],
   "author": "Edwin Kofler",
