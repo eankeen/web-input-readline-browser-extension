@@ -1,15 +1,9 @@
-// @ts-ignore Cannot find moudule
 import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin'
-// @ts-ignore Cannot find module
 import { CleanWebpackPlugin } from 'clean-webpack-plugin'
-// @ts-ignore Cannot find module
 import CopyPlugin from 'copy-webpack-plugin'
-// @ts-ignore Cannot find module
 import DuplicatePackageCheckerPlugin from 'duplicate-package-checker-webpack-plugin'
-// @ts-ignore Cannot find module
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import path from 'path'
-// @ts-ignore Cannot find module
 import webpack from 'webpack'
 
 export default {

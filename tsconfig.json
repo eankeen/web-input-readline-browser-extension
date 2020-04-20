@@ -10,7 +10,7 @@
     "strict": true,
     "alwaysStrict": true,
     "forceConsistentCasingInFileNames": true,
-    "strictNullChecks": true,
+    "strictNullChecks": false,
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
@@ -19,5 +19,5 @@
     "plugins": [{ "name": "typescript-plugin-css-modules" }]
   },
   "exclude": ["node_modules", "dist"],
-  "typeRoots": ["node_modules/@types", "node_modules/web-ext-types"]
+  "typeRoots": ["node_modules/@types", "node_modules/web-ext-types", "@types"]
 }
