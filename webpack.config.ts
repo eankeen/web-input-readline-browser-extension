@@ -21,10 +21,10 @@ export default {
     // common
     'chrome/script': './common/app/script.ts',
     'chrome/content': './common/app/content.ts',
-    'chrome/popup': './common/app/ui/popup.tsx',
+    'chrome/root': './common/app/ui/rootPopup.tsx',
     'firefox/script': './common/app/script.ts',
     'firefox/content': './common/app/content.ts',
-    'firefox/popup': './common/app/ui/popup.tsx',
+    'firefox/root': './common/app/ui/rootPopup.tsx',
 
     // chrome
     'chrome/background': './chrome/app/background.ts',
@@ -42,12 +42,24 @@ export default {
   module: {
     rules: [
       { test: /\.tsx?$/, loader: 'ts-loader' },
-      { test: /\.css$/, use: [MiniCssExtractPlugin.loader, 'css-loader'] },
+      {
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+            },
+          },
+        ],
+      },
     ],
   },
 
   plugins: [
     new webpack.ProgressPlugin(),
+    new webpack.WatchIgnorePlugin([/css\.d\.ts$/]),
     new CaseSensitivePathsPlugin(),
     new DuplicatePackageCheckerPlugin(),
     new MiniCssExtractPlugin(),

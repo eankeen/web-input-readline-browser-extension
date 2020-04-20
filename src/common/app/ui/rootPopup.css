@@ -6,11 +6,9 @@
 }
 
 .title {
-  text-align: center;
   padding: 5px;
+  text-align: center;
   margin-block-start: 10px;
   margin-inline-start: 10px;
   margin-inline-end: 10px;
 }
-
-

@@ -16,7 +16,8 @@
   margin: 0;
 }
 
-html, body {
+html,
+body {
   background: var(--oc-gray-0);
 }
 body {
@@ -43,6 +44,6 @@ p {
   padding: 30px;
   font-family: 'minor', system-ui;
   font-size: 16px;
-  color: var(--oc-gray-9);
   font-weight: 400;
+  color: var(--oc-gray-9);
 }
