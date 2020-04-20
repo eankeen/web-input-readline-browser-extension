@@ -44,7 +44,7 @@
     "persistent": true
   },
 
-  "permissions": ["https://*/*", "tabs"],
+  "permissions": ["https://*/*", "storage"],
   "content_security_policy": "default-src 'self';",
   "content_scripts": [
     {

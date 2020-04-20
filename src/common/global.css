@@ -1,0 +1,48 @@
+@font-face {
+  font-family: 'minor';
+  src: local(system-ui);
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'baloo-bhaina';
+  src: url('./BalooBhaina2-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html, body {
+  background: var(--oc-gray-0);
+}
+body {
+  min-width: 600px;
+  min-height: 400px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'baloo-bhaina', system-ui;
+  color: var(--oc-gray-9);
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: 800;
+}
+
+p {
+  padding: 30px;
+  font-family: 'minor', system-ui;
+  font-size: 16px;
+  color: var(--oc-gray-9);
+  font-weight: 400;
+}

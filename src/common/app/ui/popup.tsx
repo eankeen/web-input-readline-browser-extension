@@ -1,16 +1,20 @@
-import './styles/popup.css'
+import './popup.css'
 
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 
-class Hello extends React.Component {
+// import SettingBoolean from './SettingBoolean'
+
+class Root extends React.Component {
   render(): JSX.Element {
     return (
-      <div className="popup-padded">
-        <h1>{chrome.i18n.getMessage('l10nHello')}</h1>
+      <div className="root">
+        <h1 className="title">{chrome.i18n.getMessage('l10nHello')}</h1>
+        {/* <SettingBoolean name="enabled" /> */}
+        <p>nothing to see here!</p>
       </div>
     )
   }
 }
 
-ReactDOM.render(<Hello />, document.getElementById('root'))
+ReactDOM.render(<Root />, document.getElementById('root'))
