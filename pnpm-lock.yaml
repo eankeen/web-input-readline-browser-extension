@@ -1,10 +1,10 @@
 dependencies:
+  open-color: 1.7.0
   react: 16.13.1
   react-dom: 16.13.1_react@16.13.1
 devDependencies:
   '@types/case-sensitive-paths-webpack-plugin': 2.1.4
   '@types/chrome': 0.0.104
-  '@types/clean-webpack-plugin': 0.1.3_webpack@4.42.1
   '@types/copy-webpack-plugin': 5.0.0
   '@types/duplicate-package-checker-webpack-plugin': 2.1.0
   '@types/mini-css-extract-plugin': 0.9.1
@@ -32,6 +32,7 @@ devDependencies:
   eslint-plugin-simple-import-sort: 5.0.2_eslint@6.8.0
   eslint-plugin-standard: 4.0.1_eslint@6.8.0
   esm: 3.2.25
+  file-loader: 6.0.0_webpack@4.42.1
   husky: 4.2.5
   mini-css-extract-plugin: 0.9.0_webpack@4.42.1
   npm-run-all: 4.1.5
@@ -46,6 +47,7 @@ devDependencies:
   tslib: 1.11.1
   typescript: 3.8.3
   typescript-plugin-css-modules: 2.2.0_typescript@3.8.3
+  url-loader: 4.1.0_file-loader@6.0.0+webpack@4.42.1
   web-ext-types: 3.2.1
   webpack: 4.42.1_webpack@4.42.1
   webpack-cli: 3.3.11_webpack@4.42.1
@@ -289,15 +291,6 @@ packages:
     dev: true
     resolution:
       integrity: sha512-NDq+Vpphs5XT7IXrIHJcy27Rvf09Mes3XNsfpP2yOXUk6YiEU1QRcSLjj/A+y5jyq/kpUwC5shNET2jFeWAqEw==
-  /@types/clean-webpack-plugin/0.1.3_webpack@4.42.1:
-    dependencies:
-      clean-webpack-plugin: 3.0.0_webpack@4.42.1
-    deprecated: 'This is a stub types definition. clean-webpack-plugin provides its own type definitions, so you do not need this installed.'
-    dev: true
-    peerDependencies:
-      webpack: '*'
-    resolution:
-      integrity: sha512-exC05JEISRPSPdPMUn09/P6IigOo4GWkULnI5V4JQRYh9qcTk6lxdyrou0JjH6gw8UZF/On1sOg+5+03mVWagQ==
   /@types/color-name/1.1.1:
     dev: true
     resolution:
@@ -2497,6 +2490,18 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha512-bCg29ictuBaKUwwArK4ouCaqDgLZcysCFLmM/Yn/FDoqndh/9vNuQfXRDvTuXKLxfD/JtZQGKFT8MGcJBK644g==
+  /file-loader/6.0.0_webpack@4.42.1:
+    dependencies:
+      loader-utils: 2.0.0
+      schema-utils: 2.6.6
+      webpack: 4.42.1_webpack@4.42.1
+    dev: true
+    engines:
+      node: '>= 10.13.0'
+    peerDependencies:
+      webpack: ^4.0.0 || ^5.0.0
+    resolution:
+      integrity: sha512-/aMOAYEFXDdjG0wytpTL5YQLfZnnTmLNjn+AIrJ/6HVnTfDqLsVKUUwkDf4I4kgex36BvjuXEn/TX9B/1ESyqQ==
   /file-uri-to-path/1.0.0:
     dev: true
     optional: true
@@ -3854,7 +3859,6 @@ packages:
     resolution:
       integrity: sha1-soqmKIorn8ZRA1x3EfZathkDMaY=
   /lodash/4.17.15:
-    dev: true
     resolution:
       integrity: sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
   /log-symbols/2.2.0:
@@ -4067,7 +4071,6 @@ packages:
     dev: true
     engines:
       node: '>= 0.6'
-    optional: true
     resolution:
       integrity: sha512-+5dsGEEovYbT8UY9yD7eE4XTc4UwJ1jBYlgaQQF38ENsKR3wj/8q8RFZrF9WIZpB2V1ArTVFUva8sAul1NzRzQ==
   /mime-types/2.1.26:
@@ -4076,7 +4079,6 @@ packages:
     dev: true
     engines:
       node: '>= 0.6'
-    optional: true
     resolution:
       integrity: sha512-01paPWYgLrkqAyrlDorC1uDwl2p3qZT7yl806vW7DvDoxwXi46jsjFbg+WdwotBIk6/MbEhO/dh5aZ5sNj/dWQ==
   /mime/1.6.0:
@@ -4332,6 +4334,137 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha1-NakjLfo11wZ7TLLd8jV7GHFTbF8=
+  /npm/6.14.4:
+    bundledDependencies:
+      - abbrev
+      - ansicolors
+      - ansistyles
+      - aproba
+      - archy
+      - bin-links
+      - bluebird
+      - byte-size
+      - cacache
+      - call-limit
+      - chownr
+      - ci-info
+      - cli-columns
+      - cli-table3
+      - cmd-shim
+      - columnify
+      - config-chain
+      - debuglog
+      - detect-indent
+      - detect-newline
+      - dezalgo
+      - editor
+      - figgy-pudding
+      - find-npm-prefix
+      - fs-vacuum
+      - fs-write-stream-atomic
+      - gentle-fs
+      - glob
+      - graceful-fs
+      - has-unicode
+      - hosted-git-info
+      - iferr
+      - imurmurhash
+      - infer-owner
+      - inflight
+      - inherits
+      - ini
+      - init-package-json
+      - is-cidr
+      - json-parse-better-errors
+      - JSONStream
+      - lazy-property
+      - libcipm
+      - libnpm
+      - libnpmaccess
+      - libnpmhook
+      - libnpmorg
+      - libnpmsearch
+      - libnpmteam
+      - libnpx
+      - lock-verify
+      - lockfile
+      - lodash._baseindexof
+      - lodash._baseuniq
+      - lodash._bindcallback
+      - lodash._cacheindexof
+      - lodash._createcache
+      - lodash._getnative
+      - lodash.clonedeep
+      - lodash.restparam
+      - lodash.union
+      - lodash.uniq
+      - lodash.without
+      - lru-cache
+      - meant
+      - mississippi
+      - mkdirp
+      - move-concurrently
+      - node-gyp
+      - nopt
+      - normalize-package-data
+      - npm-audit-report
+      - npm-cache-filename
+      - npm-install-checks
+      - npm-lifecycle
+      - npm-package-arg
+      - npm-packlist
+      - npm-pick-manifest
+      - npm-profile
+      - npm-registry-fetch
+      - npm-user-validate
+      - npmlog
+      - once
+      - opener
+      - osenv
+      - pacote
+      - path-is-inside
+      - promise-inflight
+      - qrcode-terminal
+      - query-string
+      - qw
+      - read-cmd-shim
+      - read-installed
+      - read-package-json
+      - read-package-tree
+      - read
+      - readable-stream
+      - readdir-scoped-modules
+      - request
+      - retry
+      - rimraf
+      - safe-buffer
+      - semver
+      - sha
+      - slide
+      - sorted-object
+      - sorted-union-stream
+      - ssri
+      - stringify-package
+      - tar
+      - text-table
+      - tiny-relative-date
+      - uid-number
+      - umask
+      - unique-filename
+      - unpipe
+      - update-notifier
+      - uuid
+      - validate-npm-package-license
+      - validate-npm-package-name
+      - which
+      - worker-farm
+      - write-file-atomic
+    dev: false
+    engines:
+      node: 6 >=6.2.0 || 8 || >=9.3.0
+    hasBin: true
+    resolution:
+      integrity: sha512-B8UDDbWvdkW6RgXFn8/h2cHJP/u/FPa4HWeGzW23aNEBARN3QPrRaHqPIZW2NSN3fW649gtgUDNZpaRs0zTMPw==
   /num2fraction/1.2.2:
     dev: true
     resolution:
@@ -4446,6 +4579,13 @@ packages:
       node: '>=6'
     resolution:
       integrity: sha512-5NcSkPHhwTVFIQN+TUqXoS5+dlElHXdpAWu9I0HP20YOtIi+aZ0Ct82jdlILDxjLEAWwvm+qj1m6aEtsDVmm6Q==
+  /open-color/1.7.0:
+    dependencies:
+      lodash: 4.17.15
+      npm: 6.14.4
+    dev: false
+    resolution:
+      integrity: sha512-Kyl74V5gohYxajOVgIaXhvhjKtXfhwl7ddJ28HVXDkPuM8PVdaWbFPucf6qPGW6aXOMxnukw0/R1lLLyXKEffA==
   /opencollective-postinstall/2.0.2:
     dev: true
     hasBin: true
@@ -5626,8 +5766,8 @@ packages:
       integrity: sha512-i27Mic4KovM/lnGsy8whRCHhc7VicJajAjTrYg11K9zfZXnYIt4k5F+kZkwjnrhKzLic/HLU4j11mjsz2G/75g==
   /schema-utils/2.6.6:
     dependencies:
-      ajv: 6.12.1
-      ajv-keywords: 3.4.1_ajv@6.12.1
+      ajv: 6.12.2
+      ajv-keywords: 3.4.1_ajv@6.12.2
     dev: true
     engines:
       node: '>= 8.9.0'
@@ -6645,6 +6785,24 @@ packages:
     dev: true
     resolution:
       integrity: sha1-2pN/emLiH+wf0Y1Js1wpNQZ6bHI=
+  /url-loader/4.1.0_file-loader@6.0.0+webpack@4.42.1:
+    dependencies:
+      file-loader: 6.0.0_webpack@4.42.1
+      loader-utils: 2.0.0
+      mime-types: 2.1.26
+      schema-utils: 2.6.6
+      webpack: 4.42.1_webpack@4.42.1
+    dev: true
+    engines:
+      node: '>= 10.13.0'
+    peerDependencies:
+      file-loader: '*'
+      webpack: ^4.0.0 || ^5.0.0
+    peerDependenciesMeta:
+      file-loader:
+        optional: true
+    resolution:
+      integrity: sha512-IzgAAIC8wRrg6NYkFIJY09vtktQcsvU8V6HhtQj9PTefbYImzLB1hufqo4m+RyM5N3mLx5BqJKccgxJS+W3kqw==
   /url/0.11.0:
     dependencies:
       punycode: 1.3.2
@@ -6949,7 +7107,6 @@ packages:
 specifiers:
   '@types/case-sensitive-paths-webpack-plugin': ^2.1.4
   '@types/chrome': 0.0.104
-  '@types/clean-webpack-plugin': ^0.1.3
   '@types/copy-webpack-plugin': ^5.0.0
   '@types/duplicate-package-checker-webpack-plugin': ^2.1.0
   '@types/mini-css-extract-plugin': ^0.9.1
@@ -6977,9 +7134,11 @@ specifiers:
   eslint-plugin-simple-import-sort: ^5.0.2
   eslint-plugin-standard: ^4.0.1
   esm: ^3.2.25
+  file-loader: ^6.0.0
   husky: ^4.2.5
   mini-css-extract-plugin: ^0.9.0
   npm-run-all: ^4.1.5
+  open-color: ^1.7.0
   prettier: ^2.0.4
   react: ^16.13.1
   react-dom: ^16.13.1
@@ -6993,6 +7152,7 @@ specifiers:
   tslib: ^1.11.1
   typescript: ^3.8.3
   typescript-plugin-css-modules: ^2.2.0
+  url-loader: ^4.1.0
   web-ext-types: ^3.2.1
   webpack: ^4.42.1
   webpack-cli: ^3.3.11
