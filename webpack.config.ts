@@ -4,12 +4,16 @@ import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 import CopyPlugin from 'copy-webpack-plugin'
 import DuplicatePackageCheckerPlugin from 'duplicate-package-checker-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin'
 import path from 'path'
+import TerserPlugin from 'terser-webpack-plugin'
 import webpack from 'webpack'
 
+const isDev: boolean = process.env.NODE_ENV === 'development'
+
 export default {
-  mode: 'development',
-  devtool: 'inline-source-map',
+  mode: isDev ? 'development' : 'production',
+  devtool: isDev ? 'inline-source-map' : 'none',
 
   context: path.join(__dirname, 'src'),
   entry: {
@@ -61,18 +65,34 @@ export default {
             loader: 'file-loader',
             options: {
               name: '[name].[ext]',
+              // outputPath: '../dist/chrome',
             },
           },
         },
       },
     ],
   },
-
+  optimization: {
+    minimizer: [
+      new TerserPlugin({
+        parallel: true,
+      }),
+      new OptimizeCssAssetsPlugin({}),
+    ],
+  },
   plugins: [
     new webpack.ProgressPlugin(),
     new webpack.WatchIgnorePlugin([/css\.d\.ts$/]),
     new CaseSensitivePathsPlugin(),
     new DuplicatePackageCheckerPlugin(),
+    new OptimizeCssAssetsPlugin({
+      assetNameRegExp: /\.optimize\.css$/g,
+      cssProcessor: require('cssnano'),
+      cssProcessorPluginOptions: {
+        preset: ['default', { discardComments: { removeAll: true } }],
+      },
+      canPrint: true,
+    }),
     new MiniCssExtractPlugin(),
     // @ts-ignore
     new CleanWebpackPlugin(),

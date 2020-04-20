@@ -6,8 +6,11 @@
     "stylelint-config-prettier"
   ],
   "rules": {
-    "selector-pseudo-class-no-unknown": [true, {
-      "ignorePseudoClasses": ["global", "export", "import", "local"]
-    }]
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": ["global", "export", "import", "local"]
+      }
+    ]
   }
 }
