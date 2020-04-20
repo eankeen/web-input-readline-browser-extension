@@ -1,6 +1,6 @@
 {
-  "name": "readline-input-browser-extension",
-  "version": "0.0.1",
+  "name": "web input readline hotkeys",
+  "version": "0.1.0",
   "manifest_version": 2,
   "description": "readline / emacs like shortcuts for text input",
   "homepage_url": "https://duo.com/labs",
@@ -35,7 +35,7 @@
     }
   },
   "browser_action": {
-    "default_title": "TSRWPCX",
+    "default_title": "readline hotkeys",
     "default_popup": "popup.html"
   },
   "default_locale": "en",

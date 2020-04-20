@@ -20,12 +20,13 @@ export default {
   entry: {
     // common
     'chrome/script': './common/app/script.ts',
+    'chrome/content': './common/app/content.ts',
     'chrome/popup': './common/app/ui/popup.tsx',
     'firefox/script': './common/app/script.ts',
+    'firefox/content': './common/app/content.ts',
     'firefox/popup': './common/app/ui/popup.tsx',
 
     // chrome
-    'chrome/content': './chrome/app/content.ts',
     'chrome/background': './chrome/app/background.ts',
   },
 
