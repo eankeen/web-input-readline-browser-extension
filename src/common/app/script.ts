@@ -5,67 +5,78 @@ import {
   computeEndOfLine,
   computeForwardChar,
   computeForwardWord,
+  // deleteTextCursorSelection,
+  getStringStartEnd,
+  modifyTextCursorSelection,
 } from './util'
 
-function performReadlineShortcuts(
-  this: HTMLInputElement,
-  e: KeyboardEvent
-): void {
-  const string: string = (e.target as HTMLInputElement).value
-  const start: number = (e.target as HTMLInputElement).selectionStart
-  const end: number = (e.target as HTMLInputElement).selectionEnd
+function performReadlineShortcuts(this: EventTarget, e: KeyboardEvent): void {
+  const [string, start, end] = getStringStartEnd.call(this, e)
 
-  // we do not support crap when highlighting
+  // if dom element not handled with our case, ignore
+  if (!string ?? !start ?? !end) return
+
+  // do not do anything on highlight
   if (start !== end) return
 
   if (e.ctrlKey && e.code === 'KeyA') {
     e.preventDefault()
-    const newPos = computeBeginningOfLine()
-    this.setSelectionRange(newPos, newPos)
-  }
 
+    const newStart = computeBeginningOfLine()
+    modifyTextCursorSelection.call(this, newStart, newStart)
+  }
   if (e.ctrlKey && e.code === 'KeyE') {
     e.preventDefault()
-    const newPos = computeEndOfLine(string)
-    this.setSelectionRange(newPos, newPos)
+
+    const newStart = computeEndOfLine(string)
+    modifyTextCursorSelection.call(this, newStart, newStart)
   }
 
   if (e.ctrlKey && e.code === 'KeyF') {
     e.preventDefault()
 
-    const newPos = computeForwardChar(string, start)
-    this.setSelectionRange(newPos, newPos)
+    const newStart = computeForwardChar(string, start)
+    modifyTextCursorSelection.call(this, newStart, newStart)
   }
 
   if (e.ctrlKey && e.code === 'KeyB') {
     e.preventDefault()
 
-    const newPos = computeBackwardChar(string, start)
-    this.setSelectionRange(newPos, newPos)
+    const newStart = computeBackwardChar(string, start)
+    modifyTextCursorSelection.call(this, newStart, newStart)
   }
 
   if (e.altKey && e.code === 'KeyF') {
     e.preventDefault()
 
-    const newPos = computeForwardWord(string, start)
-    this.setSelectionRange(newPos, newPos)
+    const newStart = computeForwardWord(string, start)
+    modifyTextCursorSelection.call(this, newStart, newStart)
   }
 
   if (e.altKey && e.code === 'KeyB') {
     e.preventDefault()
 
-    const newPos = computeBackwardWord(string, start)
-    this.setSelectionRange(newPos, newPos)
+    const newStart = computeBackwardWord(string, start)
+    modifyTextCursorSelection.call(this, newStart, newStart)
   }
 
   if (e.altKey && e.code === 'Backspace') {
-    const newPos = computeBackwardWord(string, start)
+    e.preventDefault()
+
+    // const newStart = computeBackwardWord(string, start)
     // assume newPos is *before* start
-    this.value = string.slice(0, newPos) + string.slice(start)
-    this.setSelectionRange(newPos, newPos)
+    let el = this as HTMLInputElement
+    el.value = string.slice(0, start) + string.slice(start)
+
+    // deleteTextCursorSelection.call(this, string, newStart, newStart)
   }
 }
 
 for (let el of document.querySelectorAll('input')) {
+  el.addEventListener('keydown', performReadlineShortcuts)
+}
+
+for (let el of document.querySelectorAll('div[contenteditable=true]')) {
+  // @ts-ignore
   el.addEventListener('keydown', performReadlineShortcuts)
 }

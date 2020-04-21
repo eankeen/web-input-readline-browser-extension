@@ -39,6 +39,9 @@ export default {
 
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.css'],
+    alias: {
+      'open-color': path.resolve(__dirname, 'node_modules/open-color'),
+    },
   },
 
   module: {

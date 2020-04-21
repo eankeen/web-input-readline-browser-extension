@@ -20,7 +20,12 @@
     "persistent": true
   },
 
-  "permissions": ["https://*/*", "http://localhost/*", "http://127.0.0.1/*", "storage"],
+  "permissions": [
+    "https://*/*",
+    "http://localhost/*",
+    "http://127.0.0.1/*",
+    "storage"
+  ],
   "content_security_policy": "default-src 'self';",
   "content_scripts": [
     {

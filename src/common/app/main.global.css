@@ -1,7 +1,7 @@
-@import '../../../node_modules/open-color/open-color.css';
+@import '~open-color/open-color.css';
 
 @font-face {
-  font-family: 'minor', system-ui;
+  font-family: 'minor';
   src: local(system-ui);
   font-weight: 400;
 }
