@@ -27,9 +27,12 @@
   "author": "Edwin Kofler",
   "license": "MIT",
   "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
     "@types/case-sensitive-paths-webpack-plugin": "^2.1.4",
     "@types/chrome": "0.0.104",
     "@types/copy-webpack-plugin": "^5.0.0",
+    "@types/cssnano": "^4.0.0",
     "@types/duplicate-package-checker-webpack-plugin": "^2.1.0",
     "@types/mini-css-extract-plugin": "^0.9.1",
     "@types/node": "^13.13.0",
@@ -82,8 +85,6 @@
     "webpack-cli": "^3.3.11"
   },
   "dependencies": {
-    "@commitlint/cli": "^8.3.5",
-    "@commitlint/config-conventional": "^8.3.4",
     "open-color": "^1.7.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"

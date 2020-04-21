@@ -1,8 +1,8 @@
 interface CleanWebpackPluginOptions {
   dry?: boolean
-  verbose: boolean
+  verbose?: boolean
   cleanStatelWebpackAssets?: boolean
-  protectWebpackAssets: boolean
+  protectWebpackAssets?: boolean
   cleanOnceBeforeBuildPatterns?: boolean
   cleanAfterEveryBuildPatterns?: boolean
   dangerouslyAllowCleanPatternsOutsideProject?: boolean

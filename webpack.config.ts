@@ -2,6 +2,7 @@ import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin'
 // @ts-ignore
 import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 import CopyPlugin from 'copy-webpack-plugin'
+import cssnano from 'cssnano'
 import DuplicatePackageCheckerPlugin from 'duplicate-package-checker-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin'
@@ -76,6 +77,13 @@ export default {
     minimizer: [
       new TerserPlugin({
         parallel: true,
+        extractComments: true,
+        terserOptions: {
+          extractComments: 'all',
+          // drop_console: true,
+          // eslint-disable-next-line @typescript-eslint/camelcase
+          pure_funcs: ['console.info', 'console.debug', 'console.warn'],
+        },
       }),
       new OptimizeCssAssetsPlugin({}),
     ],
@@ -87,7 +95,7 @@ export default {
     new DuplicatePackageCheckerPlugin(),
     new OptimizeCssAssetsPlugin({
       assetNameRegExp: /\.optimize\.css$/g,
-      cssProcessor: require('cssnano'),
+      cssProcessor: cssnano,
       cssProcessorPluginOptions: {
         preset: ['default', { discardComments: { removeAll: true } }],
       },

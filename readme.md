@@ -1,10 +1,11 @@
-# readline-input-browser-extension
+# web-input-readline-hotkeys-extension
 
-chrome-specific extension to enable [readline](https://tiswww.case.edu/php/chet/readline/rltop.html) / emacs type keyboard shortcuts in text input fields. right now it works with `<input>` elements with support on the way for the inputs in slack and discord web apps
+extension to enable [readline](https://tiswww.case.edu/php/chet/readline/rltop.html) / emacs type keyboard shortcuts in `<input>` fields and `contenteditable` elements
 
 ## usage
 
 ```sh
 pnpm i
 pnpm run dev
+# output in dist/chrome or dist/firefox
 ```
