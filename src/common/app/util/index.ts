@@ -72,30 +72,30 @@ export function modifyTextCursorSelection(
   }
 }
 
-export function deleteTextCursorSelection(
-  this: EventTarget,
-  deepChild: Node,
-  string: string,
-  start: number,
-  end: number
-): void {
-  // disabled for now
-  return
+// export function deleteTextCursorSelection(
+//   this: EventTarget,
+//   deepChild: Node,
+//   string: string,
+//   start: number,
+//   end: number
+// ): void {
+//   // disabled for now
+//   return
 
-  const newValue: string = string.slice(0, start) + string.slice(end)
-  if (deepChild instanceof HTMLInputElement) {
-    let el = deepChild as HTMLInputElement
-    el.value = newValue
+//   const newValue: string = string.slice(0, start) + string.slice(end)
+//   if (deepChild instanceof HTMLInputElement) {
+//     let el = deepChild as HTMLInputElement
+//     el.value = newValue
 
-    modifyTextCursorSelection.call(this, deepChild, start, end)
-  } else if (
-    deepChild instanceof HTMLElement &&
-    (deepChild as HTMLElement).isContentEditable
-  ) {
-    let el = deepChild as HTMLElement
-    let textNode = el.firstChild as Text
-    textNode.data = newValue
-  } else {
-    throw new Error(`deepChild not a predicted value: ${deepChild.toString()}`)
-  }
-}
+//     modifyTextCursorSelection.call(this, deepChild, start, end)
+//   } else if (
+//     deepChild instanceof HTMLElement &&
+//     (deepChild as HTMLElement).isContentEditable
+//   ) {
+//     let el = deepChild as HTMLElement
+//     let textNode = el.firstChild as Text
+//     textNode.data = newValue
+//   } else {
+//     throw new Error(`deepChild not a predicted value: ${deepChild.toString()}`)
+//   }
+// }
