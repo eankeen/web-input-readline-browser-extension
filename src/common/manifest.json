@@ -1,6 +1,6 @@
 {
-  "name": "web input readline hotkeys",
-  "version": "0.1.0",
+  "name": "Web Input Readline Hotkeys",
+  "version": "0.2.1",
   "manifest_version": 2,
   "description": "readline / emacs like shortcuts for text input",
   "homepage_url": "https://github.com/eankeen/web-input-readline-hotkeys-extension",
@@ -19,7 +19,6 @@
     "scripts": ["background.js"],
     "persistent": true
   },
-
   "permissions": [
     "https://*/*",
     "http://localhost/*",

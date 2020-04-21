@@ -1,5 +1,7 @@
 {
   "name": "web-input-readline-hotkeys-extension",
+  "author": "Edwin Kofler",
+  "license": "MIT",
   "private": true,
   "version": "0.2.1",
   "description": "allow readline-style on select text input boxes",
@@ -8,7 +10,7 @@
     "prod": "cross-env NODE_ENV=production pnpm run build:webpack",
     "build:webpack": "webpack -r ts-node/register -c webpack.config.ts",
     "package": "cross-env BABEL_ENV=gulp gulp --require esm --require @babel/register -f gulpfile.js buildPackages",
-    "prepublish": "run-s prod package",
+    "prepublish": "run-s matchVersion prod package",
     "lint": "run-p lint:js lint:css lint:misc",
     "lint:fix": "run-p lint:js:fix lint:css:fix lint:misc:fix",
     "lint:js": "eslint . --ext .ts --ext .tsx",
@@ -17,19 +19,12 @@
     "lint:css:fix": "stylelint --fix \"**/*.css\"",
     "lint:misc": "prettier --check .",
     "lint:misc:fix": "prettier --write .",
-    "lint:staged": "lint-staged"
+    "lint:staged": "lint-staged",
+    "matchVersion": "node matchVersion.mjs"
   },
-  "keywords": [
-    "readline",
-    "chrome",
-    "chrome-extension",
-    "firefox",
-    "firefox-extension",
-    "hotkeys",
-    "extension"
-  ],
-  "author": "Edwin Kofler",
-  "license": "MIT",
+  "engines": {
+    "node": ">=13.13"
+  },
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",

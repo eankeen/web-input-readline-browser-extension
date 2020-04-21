@@ -7,17 +7,14 @@ export async function buildPackages() {
   const chromeZip = 'chrome.zip'
   const firefoxZip = 'firefox.zip'
 
-  del.sync([
-    `dist/${chromeZip}`,
-    `dist/${firefoxZip}`
-  ])
+  del.sync([`dist/${chromeZip}`, `dist/${firefoxZip}`])
 
-  src('dist/chrome')
+  src('dist/chrome/**')
     |> plumber()
     |> zip(chromeZip)
     |> dest('dist')
 
-  src('dist/firefox')
+  src('dist/firefox/**')
     |> plumber()
     |> zip(firefoxZip)
     |> dest('dist')
