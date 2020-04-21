@@ -18,18 +18,19 @@ export default {
 
   context: path.join(__dirname, 'src'),
   entry: {
-    // common
+    // common chrome
     'chrome/script': './common/app/script.ts',
     'chrome/content': './common/app/content.ts',
     'chrome/root': './common/app/ui/rootPopup.tsx',
     'chrome/main.global': './common/app/main.global.css',
+    'chrome/background': './common/app/background.ts',
+
+    // common firefiox
     'firefox/script': './common/app/script.ts',
     'firefox/content': './common/app/content.ts',
     'firefox/root': './common/app/ui/rootPopup.tsx',
     'firefox/main.global': './common/app/main.global.css',
-
-    // chrome
-    'chrome/background': './chrome/app/background.ts',
+    'firefox/background': './common/app/background.ts',
   },
 
   output: {
