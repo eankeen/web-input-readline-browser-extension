@@ -1,20 +1,23 @@
 export * from './compute'
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function getAlmostDeepestChildNode(el: any): any {
+  if (el instanceof Text) {
+    return el.parentNode
+  } else if (el instanceof HTMLInputElement) {
+    return el
+  }
+  return getAlmostDeepestChildNode(el.firstChild)
+}
+
 export function getStringStartEnd(
   this: EventTarget,
-  e: KeyboardEvent
+  ev: KeyboardEvent
 ): [string | null, number | null, number | null] {
-  if (this instanceof HTMLInputElement) {
-    let eventTarget = e.target as HTMLInputElement
-    return [
-      eventTarget.value,
-      eventTarget.selectionStart,
-      eventTarget.selectionEnd,
-    ]
-  } else if (this instanceof HTMLElement && this.isContentEditable) {
-    let eventTarget = e.target as HTMLDivElement
-
-    if (!(eventTarget.firstChild instanceof Text)) return [null, null, null]
+  // contentEditableGetIt
+  let contentEditableGetIt = (
+    eventTarget: HTMLElement
+  ): [string, number, number] => {
     const string = (eventTarget.firstChild as Text).wholeText
 
     let range = document.getSelection().getRangeAt(0)
@@ -22,45 +25,77 @@ export function getStringStartEnd(
     const end = range.endOffset
     return [string, start, end]
   }
+
+  if (this instanceof HTMLInputElement) {
+    let eventTarget = ev.target as HTMLInputElement
+    return [
+      eventTarget.value,
+      eventTarget.selectionStart,
+      eventTarget.selectionEnd,
+    ]
+  } else if (this instanceof HTMLElement && this.isContentEditable) {
+    let eventTarget = ev.target as HTMLElement
+
+    if (eventTarget.firstChild instanceof Text) {
+      return contentEditableGetIt(eventTarget)
+    } else {
+      let childTarget = getAlmostDeepestChildNode(eventTarget)
+
+      if (!(childTarget instanceof HTMLElement))
+        throw new Error('child target not html element')
+      return contentEditableGetIt(childTarget as HTMLElement)
+    }
+  }
   return [null, null, null]
 }
 
 export function modifyTextCursorSelection(
   this: EventTarget,
+  deepChild: Node,
   start: number,
   end: number
 ): void {
-  if (this instanceof HTMLInputElement) {
-    let el = this as HTMLInputElement
+  if (deepChild instanceof HTMLInputElement) {
+    let el = deepChild as HTMLInputElement
     el.setSelectionRange(start, end)
-  } else if (this instanceof HTMLElement && this.isContentEditable) {
-    let el = this as HTMLElement
+  } else if (deepChild instanceof HTMLElement && deepChild.isContentEditable) {
+    let el = deepChild as HTMLElement
     let range = document.createRange()
     let selection = document.getSelection()
+
     range.setStart(el.firstChild, start)
     range.collapse(true)
     selection.removeAllRanges()
     selection.addRange(range)
+  } else {
+    throw new Error(`deepChild not a predicted value: ${deepChild.toString()}`)
   }
 }
 
 export function deleteTextCursorSelection(
   this: EventTarget,
+  deepChild: Node,
   string: string,
   start: number,
   end: number
 ): void {
+  // disabled for now
+  return
+
   const newValue: string = string.slice(0, start) + string.slice(end)
-  if (this instanceof HTMLInputElement) {
-    let el = this as HTMLInputElement
+  if (deepChild instanceof HTMLInputElement) {
+    let el = deepChild as HTMLInputElement
     el.value = newValue
 
-    modifyTextCursorSelection.call(this, start, end)
-  } else if (this instanceof HTMLElement && this.isContentEditable) {
-    let el = this as HTMLElement
-    if (el.childNodes.length === 1 && el.firstChild instanceof Text) {
-      let textNode = el.firstChild as Text
-      textNode.data = newValue
-    }
+    modifyTextCursorSelection.call(this, deepChild, start, end)
+  } else if (
+    deepChild instanceof HTMLElement &&
+    (deepChild as HTMLElement).isContentEditable
+  ) {
+    let el = deepChild as HTMLElement
+    let textNode = el.firstChild as Text
+    textNode.data = newValue
+  } else {
+    throw new Error(`deepChild not a predicted value: ${deepChild.toString()}`)
   }
 }
