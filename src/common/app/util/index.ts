@@ -41,9 +41,6 @@ export function modifyTextCursorSelection(
     range.collapse(true)
     selection.removeAllRanges()
     selection.addRange(range)
-    console.log(this)
-  } else {
-    console.info(this)
   }
 }
 
@@ -53,10 +50,17 @@ export function deleteTextCursorSelection(
   start: number,
   end: number
 ): void {
-  if (this instanceof HTMLElement) {
+  const newValue: string = string.slice(0, start) + string.slice(end)
+  if (this instanceof HTMLInputElement) {
     let el = this as HTMLInputElement
-    el.value = string.slice(0, start) + string.slice(start)
+    el.value = newValue
 
     modifyTextCursorSelection.call(this, start, end)
+  } else if (this instanceof HTMLElement && this.isContentEditable) {
+    let el = this as HTMLElement
+    if (el.childNodes.length === 1 && el.firstChild instanceof Text) {
+      let textNode = el.firstChild as Text
+      textNode.data = newValue
+    }
   }
 }

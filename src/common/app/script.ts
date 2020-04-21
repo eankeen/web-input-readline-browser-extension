@@ -5,7 +5,7 @@ import {
   computeEndOfLine,
   computeForwardChar,
   computeForwardWord,
-  // deleteTextCursorSelection,
+  deleteTextCursorSelection,
   getStringStartEnd,
   modifyTextCursorSelection,
 } from './util'
@@ -63,12 +63,12 @@ function performReadlineShortcuts(this: EventTarget, e: KeyboardEvent): void {
   if (e.altKey && e.code === 'Backspace') {
     e.preventDefault()
 
-    // const newStart = computeBackwardWord(string, start)
+    const newStart = computeBackwardWord(string, start)
     // assume newPos is *before* start
-    let el = this as HTMLInputElement
-    el.value = string.slice(0, start) + string.slice(start)
+    deleteTextCursorSelection.call(this, string, newStart, start)
 
-    // deleteTextCursorSelection.call(this, string, newStart, newStart)
+    // after deleting text, we have to readjust the cursor
+    modifyTextCursorSelection.call(this, newStart, newStart)
   }
 }
 
