@@ -1,0 +1,16 @@
+{
+  "env": {
+    "gulp": {
+      "presets": [
+        [
+          "@babel/typescript",
+          {
+            "allowNamesapces": true
+          }
+        ],
+        "@babel/env"
+      ],
+      "plugins": [["improved-piped-pipelines", { "proposal": "minimal" }]]
+    }
+  }
+}
