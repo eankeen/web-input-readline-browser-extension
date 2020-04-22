@@ -132,9 +132,4 @@ setInterval(() => {
     // @ts-ignore
     el.addEventListener('keydown', performReadlineShortcutsWrapper)
   }
-}, 3000)
-
-document.addEventListener('keydown', function (ev: KeyboardEvent): void {
-  console.log(this)
-  console.log(ev)
-})
+}, 1000)
