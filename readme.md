@@ -18,6 +18,6 @@ pnpm i
 pnpm run dev
 # output in dist/chrome or dist/firefox
 
-# publish (runs `package` which generates `chrome.zip` and `firefox.zip`)
-pnpm run publish
+pnpm run package
+# creates `dist/chrome.zip` and `dist/firefox.zip`
 ```

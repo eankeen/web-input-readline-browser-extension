@@ -10,7 +10,7 @@
     "prod": "cross-env NODE_ENV=production pnpm run build:webpack",
     "build:webpack": "webpack -r ts-node/register -c webpack.config.ts",
     "package": "cross-env BABEL_ENV=gulp gulp --require esm --require @babel/register -f gulpfile.js buildPackages",
-    "prepublish": "run-s np matchVersion prod package",
+    "publish:pre": "run-s np matchVersion prod package",
     "site:generate": "cross-env BABEL_ENV=gulp gulp --require esm --require @babel/register -f gulpfile.js docs",
     "lint": "run-p lint:js lint:css lint:misc",
     "lint:fix": "run-p lint:js:fix lint:css:fix lint:misc:fix",
