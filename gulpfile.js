@@ -6,6 +6,7 @@ import del from 'del'
 export async function buildPackages() {
   const chromeZip = 'chrome.zip'
   const firefoxZip = 'firefox.zip'
+  const sourceZip = 'source.zip'
 
   del.sync([`dist/${chromeZip}`, `dist/${firefoxZip}`])
 
@@ -17,5 +18,10 @@ export async function buildPackages() {
   src('dist/firefox/**')
     |> plumber()
     |> zip(firefoxZip)
+    |> dest('dist')
+
+  src(['./**',  '!node_modules/**', '!dist/**', '!*.log'])
+    |> plumber()
+    |> zip(sourceZip)
     |> dest('dist')
 }
